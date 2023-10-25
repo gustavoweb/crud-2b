@@ -3,7 +3,7 @@ class Database {
     private $host = 'localhost';
     private $usuario = 'root';
     private $senha = '';
-    private $banco = 'crud1';
+    private $banco = 'crud2';
     private $conexao;
 
     public function conectar() {
