@@ -60,6 +60,37 @@ class Usuario {
         return $usuarios;
     }
 
+    public function deletarUsuario($id) {
+        $sql = "DELETE FROM usuarios WHERE usu_id = ?";
+        
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param("i", $id);
+        
+        if ($stmt->execute()) {
+            // return true; // Usuário excluído com sucesso.
+            header("location: ../public/index.php?excluiu=1");
+        } else {
+            return false; // Erro ao excluir o usuário.
+        }
+    }
+
+    public function buscarUsuarioPorId($id) {
+        $sql = "SELECT * FROM usuarios WHERE usu_id = ?";
+        
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        if ($result->num_rows > 0) {
+            $usuario = $result->fetch_assoc();
+            $stmt->close();
+            return $usuario;
+        } else {
+            return null; // Usuário não encontrado.
+        }
+    }
+
 
 }
 

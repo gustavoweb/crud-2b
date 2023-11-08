@@ -36,5 +36,18 @@
             echo '<hr>';
         }
     ?>
+    <a href="formulario_adicionar.php">
+        <button>Cadastrar</button>
+    </a>
+
+    <!-- mensagens -->
+    <?php
+        if(isset($_GET['excluiu'])){
+    ?>
+        <script>alert('Duas Palavras: Para Béns!')</script>
+    <?php
+        }
+    ?>
+
 </body>
 </html>
